@@ -1,3 +1,4 @@
+import 'package:apppet/app/routes/auth_routers.dart';
 import 'package:apppet/app/routes/splash_routers.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,7 @@ class AppPet extends StatelessWidget {
       theme: PetUi.theme,
       getPages: [
         ...SplashRouters.routers,
+        ...AuthRouters.routers,
       ],
     );
   }

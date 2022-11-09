@@ -1,5 +1,6 @@
 import 'package:apppet/app/core/ui/pet_ui.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
 class SplashPage extends StatefulWidget {
@@ -28,36 +29,21 @@ class _SplashPageState extends State<SplashPage> with SingleTickerProviderStateM
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: PetAppbar(),
-      body: SafeArea(
-        child: Container(
-          decoration: const BoxDecoration(
-            gradient: PetUi.degradePrincipal,
-          ),
-          child: Lottie.asset(
-            'assets/lotties/patinha.json',
-            controller: _controller,
-            onLoaded: (comp) {
-              _controller.duration = comp.duration;
-              _controller.forward();
-            },
-          ),
-          // child: Column(
-          //   children: [
-          //     const SizedBox(height: 10),
-          //     const Padding(
-          //       padding: EdgeInsets.all(8.0),
-          //       child: PetTextformfield(
-          //         label: 'Text Form Field',
-          //       ),
-          //     ),
-          //     const SizedBox(height: 10),
-          //     PetButton(
-          //       label: 'Entrar',
-          //       onPressed: () {},
-          //     )
-          //   ],
-          // ),
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          gradient: PetUi.degradePrincipal,
+        ),
+        child: Lottie.asset(
+          'assets/lotties/patinha.json',
+          controller: _controller,
+          onLoaded: (comp) async {
+            _controller.duration = comp.duration;
+            _controller.forward();
+            await 4.seconds.delay();
+            Get.offAllNamed('/login');
+          },
         ),
       ),
     );
